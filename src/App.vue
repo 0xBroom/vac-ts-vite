@@ -1,7 +1,7 @@
 <template>
   <vue-advanced-chat height="calc(100vh - 20px)" :current-user-id="currentUserId" :rooms="JSON.stringify(rooms)"
     :rooms-loaded="true" :messages-loaded="messagesLoaded" :messages="JSON.stringify(messages)"
-    :room-actions="JSON.stringify(roomActions)" @fetch-messages="fetchMessages($event.detail[0])"
+    :room-actions="JSON.stringify(roomActions)" :theme="theme" @fetch-messages="fetchMessages($event.detail[0])"
     @send-message="sendMessage($event.detail[0])" />
 </template>
 
@@ -33,6 +33,7 @@ export default {
       { name: 'deleteRoom', title: 'Delete Room' },
     ]);
     const messagesLoaded = ref(false);
+    const theme = 'dark';
 
     // Function to fetch messages
     function fetchMessages(options: { reset?: boolean } = {}) {
@@ -96,6 +97,7 @@ export default {
       messages,
       roomActions,
       messagesLoaded,
+      theme,
       fetchMessages,
       sendMessage,
     };
